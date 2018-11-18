@@ -118,6 +118,7 @@ $(document).ready(function () {
                 .done(function (data, textStatus, jqXHR) {
                     progressBar.complete(true);
                     alert.success('Ok !');
+
                     $('#result tbody tr').remove();
                     data.forEach(function (node) {
                         $('#result tbody').append('<tr><td>' + node.da + '</td><td>' + node.en + '</td></tr>');
