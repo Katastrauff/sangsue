@@ -1,0 +1,51 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link rel="stylesheet" type="text/css" href="/css/bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/404.css" />
+    <title>{{title}}</title>
+</head>
+<body>
+    <form id="form" action="{{action}}" method="post">
+        <div class="container">
+            <header class="jumbotron">
+                <h1>{{title}}</h1>
+                <p class="lead">
+                    {{description}}
+                </p>
+            </header>
+
+            <div id="alert" class="alert alert-primary alert-dismissible fade" role="alert">
+                <span class="alert-text"></span>
+                <button type="button" class="close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            {{{body}}}
+
+            <div class="modal fade" tabindex="-1" role="dialog">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLongTitle">Processing... Please wait.</h5>
+                        </div>
+                        <div class="modal-body">
+                            <div class="progress">
+                                <div id="ajax-progress" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 5%" aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </form>
+    <script src="/js/jQuery/jquery-3.1.1.min.js"></script>
+    <script src="/js/popper/popper-1.14.15.min.js"></script>
+    <script src="/js/bootstrap/bootstrap.min.js"></script>
+    <script src="/js/core.js"></script>
+</body>
+</html>

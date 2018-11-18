@@ -1,0 +1,2 @@
+D:\DEV\Leech\sangsue\sangsue\obj\Debug\sangsue.njsproj.CoreCompileInputs.cache
+D:\DEV\Leech\sangsue\sangsue\bin\Microsoft.NodejsTools.WebRole.dll
