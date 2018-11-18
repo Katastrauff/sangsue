@@ -1,4 +1,5 @@
 ﻿
+module.modules = module.parent.modules;
 const controller = require('./controller.js');
 
 module.exports = class error500 extends controller {

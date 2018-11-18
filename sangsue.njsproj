@@ -67,6 +67,7 @@
     </Compile>
     <Compile Include="server.js.bak" />
     <Compile Include="server.js" />
+    <Content Include="views\css\open-iconic-bootstrap.css" />
     <Content Include="views\error.hbs">
       <SubType>Code</SubType>
     </Content>
@@ -83,6 +84,11 @@
     <Content Include="views\css\bootstrap\bootstrap.min.css" />
     <Content Include="views\css\bootstrap\bootstrap.min.css.map" />
     <Content Include="views\favicon.ico" />
+    <Content Include="views\fonts\open-iconic.eot" />
+    <Content Include="views\fonts\open-iconic.otf" />
+    <Content Include="views\fonts\open-iconic.svg" />
+    <Content Include="views\fonts\open-iconic.ttf" />
+    <Content Include="views\fonts\open-iconic.woff" />
     <Content Include="views\js\bootstrap\bootstrap.bundle.js.map" />
     <Content Include="views\js\bootstrap\bootstrap.bundle.min.js.map" />
     <Content Include="views\js\bootstrap\bootstrap.js.map" />
@@ -101,8 +107,10 @@
     <Folder Include="core\" />
     <Folder Include="controllers\" />
     <Folder Include="business\" />
+    <Folder Include="download\" />
     <Folder Include="views\css\" />
     <Folder Include="views\css\bootstrap\" />
+    <Folder Include="views\fonts\" />
     <Folder Include="views\js\" />
     <Folder Include="views\js\bootstrap\" />
     <Folder Include="views\js\jQuery\" />

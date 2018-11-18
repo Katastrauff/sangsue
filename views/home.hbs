@@ -4,23 +4,71 @@
 <div class="form-group">
     <div class="form-group">
         <label for="url">URL :</label>
-        <input id="url" name="url" type="url" class="form-control" placeholder="http://">
+        <input id="url" name="url" type="url" class="form-control" placeholder="http://" value="http://www.101languages.net/danish/most-common-danish-words/">
+        <small id="urlHelp" class="form-text text-muted">Enter the url to extract the danish words</small>
     </div>
 
     <button id="btnGetIt" type="button" class="btn btn-primary">Get it !</button>
+    <a id="btnCustomize" href="#" class="btn btn-light">
+        <i class="oi oi-plus"></i>
+        <span>Customize</span>
+    </a>
+    <a id="btnDownload" class="btn btn-light fade" href="#">
+        <i class="oi oi-data-transfer-download"></i>
+        <span>Download it !</span>
+    </a>
 </div>
-
-<div id="result" class="invisible">
-    <table class="table table-sm table-hover">
-        <thead>
-            <tr>
-                <th scope="col">Dansk</th>
-                <th scope="col">English</th>
-            </tr>
-        </thead>
-        <tbody>
-        </tbody>
-    </table>
-
+<div id="customize" class="row fade">
+    <div class="form-group col col-5">
+        <div class="field form-group">
+            <label for="url">Parent item XPath :</label>
+            <input id="parentXpath" name="parentXpath" type="text" class="xpath form-control" placeholder="//td[@class='column-2']/parent::tr" value="//td[@class='column-2']/parent::tr">
+            <small id="parentXpathHelp" class="form-text text-muted">
+                Enter the XPath to get the parent element of the danish and english words. <a href="https://www.w3schools.com/xml/xpath_syntax.asp" target="_blank">Help</a>.
+            </small>
+            <div class="onlyWhenhtml fade">
+                <button id="btnTestParentXpath" type="button" class="btnTestParent btn btn-primary small">Test</button>
+                <div class="highlight border fade">
+                    <pre style="max-height:12rem; overflow:auto;margin:0"><code class="htmlContent language-html small" data-lang="html" style="padding:0 1rem"></code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="field form-group">
+            <label for="url">Danish item XPath :</label>
+            <input id="danishXPath" name="danishXPath" type="text" class="xpath form-control" placeholder="td[@class='column-2']/text()[1]" value="td[@class='column-2']/text()[1]">
+            <small id="danishXpathHelp" class="form-text text-muted">
+                Enter the XPath to get the danish words. <a href="https://www.w3schools.com/xml/xpath_syntax.asp" target="_blank">Help</a>.
+                <br />
+                Note: it is the relative path from the parent item, do not begin with "/".
+                <br />
+                Note 2 : the data retrieved is a nodeValue, so relative to a textNode, finish your xPath with "/text()".
+            </small>
+            <div class="onlyWhenhtml fade">
+                <button id="btnTestDanishXPath" type="button" class="btnTest btn btn-primary small">Test</button>
+                <div class="highlight border fade">
+                    <pre style="margin:0"><code class="htmlContent language-html small" data-lang="html" style="padding:0 1rem"></code></pre>
+                </div>
+            </div>
+        </div>
+        <div class="field form-group">
+            <label for="url">English item XPath :</label>
+            <input id="englishXPath" name="englishXPath" type="text" class="xpath form-control" placeholder="td[@class='column-3']/text()[1]" value="td[@class='column-3']/text()[1]">
+            <small id="englishXpathHelp" class="form-text text-muted">
+                Enter the XPath to get the english words. <a href="https://www.w3schools.com/xml/xpath_syntax.asp" target="_blank">Help</a>.
+                <br />
+                Note: it is the relative path from the parent item, do not begin with "/".
+                <br />
+                Note 2 : the data retrieved is a nodeValue, so relative to a textNode, finish your xPath with "/text()".
+            </small>
+            <div class="onlyWhenhtml fade">
+                <button id="btnTestEnglishXPath" type="button" class="btnTest btn btn-primary small">Test</button>
+                <div class="highlight border fade">
+                    <pre style="margin:0"><code class="htmlContent language-html small" data-lang="html" style="padding:0 1rem"></code></pre>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="code col col-7 small border highlight" style="max-height:45rem;padding:0">
+        <pre style="max-height:100%"><code id="htmlContent" class="language-html" data-lang="html" style="max-height:100%; overflow: auto;padding:0 1rem"></code></pre>
+    </div>
 </div>
-

@@ -1,20 +1,30 @@
 ﻿
-const controller = require('./controller.js');
-const leecher = require('../business/leecher.js');
+try {
+    module.modules = module.parent.modules;
 
-module.exports = class home extends controller {
-    constructor() {
-        super();
-    }
+    var controller = require('./controller.js');
+    var leecherClass = require('../business/leecher.js');
 
-    route(request, response, view, model, methodName, postData) {
-        if (methodName === 'getit') {
-
-            return leecher(postData["url"]);
+    module.exports = class home extends controller {
+        constructor() {
+            super(['getit', 'customize']);
         }
-    }
 
-    render(request, response, view, model) {
-        super.render(request, response, view, model, this.route);
-    }
-};
+        getJsonData(request, response, model, methodName, postData) {
+            var leecher = new leecherClass();
+            leecher.init(request, postData);
+            var data = leecher.leech();
+            if (methodName === 'getit') {
+                leecher.buildText();
+            }
+            return data;
+        }
+
+        render(request, response, view, model) {
+            super.render(request, response, view, model);
+        }
+    };
+
+} catch (err) {
+    console.log(err);
+}

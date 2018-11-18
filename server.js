@@ -1,38 +1,57 @@
 'use strict';
 
-const express = require('express');
-const exphbs = require('express-handlebars');
-const path = require('path');
-const port = process.env.PORT || 8080;
-var bodyParser = require('body-parser');
+try {
+    const port = process.env.PORT || 8080;
+    const express = require('express');
+    const exphbs = require('express-handlebars');
+    const path = require('path');
+    const bodyParser = require('body-parser');
+    const app = express();
+    const XMLHttpRequest = require("xmlhttprequest").XMLHttpRequest;
+    const fs = require('fs');
+    const xpath = require('xpath');
+    const dom = require('xmldom').DOMParser
+    const querystring = require('querystring');
+    const htmlencoder = new require('node-html-encoder').Encoder();
 
+    module.modules = {
+        path: path,
+        app: app,
+        bodyParser: bodyParser,
+        XMLHttpRequest: XMLHttpRequest,
+        fs: fs,
+        xpath: xpath,
+        dom: dom,
+        querystring: querystring,
+        htmlencoder: htmlencoder
+    }
 
+    app.use(bodyParser.urlencoded({ extended: false }));
+    // Authorize JSON
+    app.use(bodyParser.json());
 
-var app = module.exports = express();
-module.app = app;
+    // Use engine ehbs to provide html templates and render them with models
+    app.engine('.hbs', exphbs({
+        defaultLayout: 'main',
+        extname: '.hbs',
+        layoutsDir: path.join(__dirname, 'views/layouts')
+    }));
+    app.set('view engine', '.hbs');
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(bodyParser.json())
+    // Path for css and js and errors
+    app.use(express.static(path.join(__dirname, 'views')));
 
-app.engine('.hbs', exphbs({
-    defaultLayout: 'main',
-    extname: '.hbs',
-    layoutsDir: path.join(__dirname, 'views/layouts')
-}));
-app.set('view engine', '.hbs');
+    // Log all entering requests
+    app.use((request, response, next) => {
+        console.log(request.headers);
+        next();
+    });
 
-/* Path for css and js and errors */
-app.use(express.static(path.join(__dirname, 'views')));
+    // Route entering requests
+    require('./core/router');
 
-app.use((request, response, next) => {
-    console.log(request.headers);
-    next();
-});
-
-
-require('./core/router');
-
-
-
-
-app.listen(port);
+    // Listen to port and get all requests to this port
+    app.listen(port);
+} catch (err) {
+    console.error(err);
+}

@@ -1,8 +1,7 @@
 ﻿
+module.modules = module.parent.modules;
+var mods = module.modules;
 const controller = require('./controller.js');
-
-var path = require('path');
-var http = require('http');
 
 
 module.exports = class home extends controller {
@@ -19,7 +18,7 @@ module.exports = class home extends controller {
         if (filename.indexOf('#') >= 0) {
             filename = filename.substring(0, filename.indexOf('?'));
         }
-        var ext = path.extname(filename);
+        var ext = mods.path.extname(filename);
 
         response.url = request.originalUrl;
         response.status(404);
